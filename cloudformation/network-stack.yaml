@@ -229,6 +229,12 @@ Resources:
           RouteTableId: !Ref PrivateRouteTable2
           SubnetId: !Ref PrivateSubnet2
 
+  ControlPlaneSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security Group for cluster communication with worker nodes
+      VpcId: !Ref VPC
+
 Outputs:
   VPC:
     Description: A reference to the created VPC
