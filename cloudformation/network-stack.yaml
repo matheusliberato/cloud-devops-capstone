@@ -206,7 +206,7 @@ Outputs:
     Export:
       Name: !Sub ${EnvironmentName}-VPCID
 
-p  InternetGateway:
+  InternetGateway:
     Description: A reference to the created InternetGateway
     Value: !Ref InternetGateway
     Export:
