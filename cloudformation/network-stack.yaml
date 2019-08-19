@@ -115,12 +115,20 @@ Resources:
 
   NatGateway1:
     Type: AWS::EC2::NatGateway
+    DependsOn:
+      - NatGateway1EIP
+      - PublicSubnet1
+      - InternetGatewayAttachment
     Properties:
       AllocationId: !GetAtt NatGateway1EIP.AllocationId
       SubnetId: !Ref PublicSubnet1
 
   NatGateway2:
     Type: AWS::EC2::NatGateway
+    DependsOn:
+      - NatGateway2EIP
+      - PublicSubnet2
+      - InternetGatewayAttachment
     Properties:
       AllocationId: !GetAtt NatGateway2EIP.AllocationId
       SubnetId: !Ref PublicSubnet2
@@ -146,12 +154,18 @@ Resources:
 
   PublicSubnet1RouteTableAssociation:
       Type: AWS::EC2::SubnetRouteTableAssociation
+      DependsOn:
+        - PublicRouteTable
+        - PublicSubnet1
       Properties:
           RouteTableId: !Ref PublicRouteTable
           SubnetId: !Ref PublicSubnet1
 
   PublicSubnet2RouteTableAssociation:
       Type: AWS::EC2::SubnetRouteTableAssociation
+      DependsOn:
+        - PublicRouteTable
+        - PublicSubnet2
       Properties:
           RouteTableId: !Ref PublicRouteTable
           SubnetId: !Ref PublicSubnet2
@@ -167,6 +181,9 @@ Resources:
 
   DefaultPrivateRoute1:
       Type: AWS::EC2::Route
+      DependsOn:
+        - InternetGatewayAttachment
+        - NatGateway01
       Properties:
           RouteTableId: !Ref PrivateRouteTable1
           DestinationCidrBlock: 0.0.0.0/0
@@ -174,6 +191,9 @@ Resources:
 
   PrivateSubnet1RouteTableAssociation:
       Type: AWS::EC2::SubnetRouteTableAssociation
+      DependsOn:
+        - PrivateRouteTable1
+        - PrivateSubnet1
       Properties:
           RouteTableId: !Ref PrivateRouteTable1
           SubnetId: !Ref PrivateSubnet1
@@ -188,6 +208,9 @@ Resources:
 
   DefaultPrivateRoute2:
       Type: AWS::EC2::Route
+      DependsOn:
+        - InternetGatewayAttachment
+        - NatGateway2
       Properties:
           RouteTableId: !Ref PrivateRouteTable2
           DestinationCidrBlock: 0.0.0.0/0
@@ -195,6 +218,9 @@ Resources:
 
   PrivateSubnet2RouteTableAssociation:
       Type: AWS::EC2::SubnetRouteTableAssociation
+      DependsOn:
+        - PrivateRouteTable2
+        - PrivateSubnet2
       Properties:
           RouteTableId: !Ref PrivateRouteTable2
           SubnetId: !Ref PrivateSubnet2
