@@ -1,0 +1,65 @@
+---
+Description:
+  Matheus Liberato / Udacity Final Project
+  This script create a kubernetes cluster using network resources
+  provided by network-stack script.
+
+Parameters:
+
+  EnvironmentName:
+    Description: An environment name that will be prefixed to resouces.
+    Type: String
+
+Resources:
+
+  ClusterControlPlaneSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Cluster communication with worker nodes
+      VpcId:
+        Fn::ImportValue:
+          !Sub "${EnvironmentName}-VPCID"
+
+  Cluster:
+    Type: "AWS::EKS::Cluster"
+    Properties:
+      Version: "1.13"
+      RoleArn: arn:aws:iam::961160187669:role/AmazonEKSServiceRole
+      ResourcesVpcConfig:
+        SecurityGroupIds:
+          - !Ref ClusterControlPlaneSecurityGroup
+        SubnetIds:
+          - Fn::ImportValue:
+              !Sub "${EnvironmentName}-PRI1-SN"
+          - Fn::ImportValue:
+              !Sub "${EnvironmentName}-PRI2-SN"
+          - Fn::ImportValue:
+              !Sub "${EnvironmentName}-PUB1-SN"
+          - Fn::ImportValue:
+              !Sub "${EnvironmentName}-PUB2-SN"
+
+Outputs:
+  ClusterName:
+    Description: Cluster Name
+    Value: !Ref Cluster
+    Export:
+      Name: !Sub ${EnvironmentName}-ClusterName
+
+  ClusterArn:
+    Description: Cluster Arn
+    Value: !GetAtt Cluster.Arn
+    Export:
+      Name: !Sub ${EnvironmentName}-ClusterArn
+
+  ClusterEndpoint:
+    Description: Cluster Endpoint
+    Value: !GetAtt Cluster.Endpoint
+    Export:
+      Name: !Sub ${EnvironmentName}-ClusterEndpoint
+
+  ClusterControlPlaneSecurityGroup:
+    Description: ClusterControlPlaneSecurityGroup
+    Value: !Ref ClusterControlPlaneSecurityGroup
+    Export:
+      Name: !Sub ${EnvironmentName}-ClusterControlPlaneSecurityGroup
+
