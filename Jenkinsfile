@@ -15,6 +15,7 @@ node {
 
     stage('Push image') {
         docker.withRegistry('https://961160187669.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:aws-jenkins') {
+            app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
     }
