@@ -1,0 +1,42 @@
+[
+  {
+    "ParameterKey": "EnvironmentName",
+    "ParameterValue": "UdacityCapstone"
+  },
+  {
+    "ParameterKey": "ClusterName",
+    "ParameterValue": "Cluster-2j4Atw9LWW0Y"
+  },
+  {
+    "ParameterKey": "KeyName",
+    "ParameterValue": "capstone"
+  },
+  {
+    "ParameterKey": "NodeImageId",
+    "ParameterValue": "ami-00b95829322267382"
+  },
+  {
+    "ParameterKey": "NodeAutoScalingGroupMinSize",
+    "ParameterValue": "1"
+  },
+  {
+    "ParameterKey": "NodeAutoScalingGroupMaxSize",
+    "ParameterValue": "5"
+  },
+  {
+    "ParameterKey": "NodeAutoScalingGroupDesiredCapacity",
+    "ParameterValue": "3"
+  },
+  {
+    "ParameterKey": "NodeVolumeSize",
+    "ParameterValue": "20"
+  },
+  {
+    "ParameterKey": "BootstrapArguments",
+    "ParameterValue": ""
+  },
+  {
+    "ParameterKey": "NodeGroupName",
+    "ParameterValue": "GroupCapstone"
+  }
+]
