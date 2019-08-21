@@ -1,7 +1,7 @@
 [
   {
     "ParameterKey": "EnvironmentName",
-    "ParameterValue": "Udacity-FinalProject"
+    "ParameterValue": "UdacityCapstone"
   },
   {
     "ParameterKey": "VPCCIDR",
