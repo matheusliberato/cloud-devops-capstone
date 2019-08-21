@@ -1,0 +1,77 @@
+---
+Description:
+  Matheus Liberato / Udacity Capstone
+  This script deploys an EC2 Instance with jenkins installed, which
+  will be used for Continous Integration (CI) pipeline
+
+Parameters:
+
+  EnvironmentName:
+    Description: An environment name that will be prefixed to resouces.
+    Type: String
+
+  KeyName:
+    Description: The keyname used to access EC2 instance by SSH
+    Type: String
+
+  NodeImageId:
+    Description: Node Image ID for EC2 Instance (Ubuntu Server)
+    Type: String
+
+Resources:
+
+  JenkinsSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Jenkins Security Group
+      VpcId:
+        Fn::ImportValue: !Sub "${EnvironmentName}-VPCID"
+      SecurityGroupIngress:
+        IpProtocol: tcp
+        FromPort: 8080
+        ToPort: 8080
+        CidrIp: 0.0.0.0/0
+      SecurityGroupIngress:
+        IpProtocol: tcp
+        FromPort: 0
+        ToPort: 65535
+        CidrIp: 0.0.0.0/0
+
+  JenkinsEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties: 
+      ImageId: !Ref NodeImageId 
+      KeyName: !Ref KeyName
+      InstanceType: t3.medium
+      SecurityGroupIds:
+        - !Ref JenkinsSecurityGroup
+      BlockDeviceMappings:
+      - DeviceName: "/dev/sda1"
+        Ebs:
+            VolumeSize: '10'
+      SubnetId:
+        Fn::ImportValue:
+          !Sub "${EnvironmentName}-PUB1-SN"
+      UserData:
+        IyEvYmluL2Jhc2gKYXB0LWdldCB1cGRhdGUKYXB0IGluc3RhbGwgLXkgZGVmYXVsdC1qZGsKd2dl
+        dCAtcSAtTyAtIGh0dHBzOi8vcGtnLmplbmtpbnMuaW8vZGViaWFuL2plbmtpbnMuaW8ua2V5IHwg
+        YXB0LWtleSBhZGQgLQpzaCAtYyAnZWNobyBkZWIgaHR0cHM6Ly9wa2cuamVua2lucy5pby9kZWJp
+        YW4tc3RhYmxlIGJpbmFyeS8gPiAvZXRjL2FwdC9zb3VyY2VzLmxpc3QuZC9qZW5raW5zLmxpc3Qn
+        CmFwdC1nZXQgdXBkYXRlCmFwdC1nZXQgaW5zdGFsbCAteSBqZW5raW5zCnN5c3RlbWN0bCBzdGF0
+        dXMgamVua2lucy5zZXJ2aWNlCg==
+      Tags:
+        - Key: Name
+          Value: !Sub "${EnvironmentName}-JENKINS"
+
+Outputs:
+  JenkinsSecurityGroup:
+    Description: Jenkins' Security Group
+    Value: !Ref JenkinsSecurityGroup
+
+  JenkinsEC2InstancePublicDNS:
+    Description: The PublicDNS of Jenkins EC2 Instance
+    Value: !Join [ "", [ "http://", !GetAtt JenkinsEC2Instance.PublicDnsName, ":8080"]]
+    Export:
+      Name: !Sub ${EnvironmentName}-JENKINS-PUB-DNS
+
+

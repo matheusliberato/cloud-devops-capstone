@@ -1,0 +1,14 @@
+[
+  {
+    "ParameterKey": "EnvironmentName",
+    "ParameterValue": "UdacityCapstone"
+  },
+  {
+    "ParameterKey": "KeyName",
+    "ParameterValue": "capstone"
+  },
+  {
+    "ParameterKey": "NodeImageId",
+    "ParameterValue": "ami-06f2f779464715dc5"
+  }
+]
