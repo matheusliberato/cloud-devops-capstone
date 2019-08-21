@@ -1,6 +1,6 @@
 ---
 Description:
-  Matheus Liberato / Udacity Final Project
+  Matheus Liberato / Udacity Capstone
   This script create a kubernetes cluster using network resources
   provided by network-stack script.
 
