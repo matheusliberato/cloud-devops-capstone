@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website-capstone-deployment
+  labels:
+    app: website-capstone-app
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: website-capstone-app
+  template:
+    metadata:
+      labels:
+        app: website-capstone-app
+    spec:
+      containers:
+      - name: website-capstone-app
+        image: 961160187669.dkr.ecr.us-west-2.amazonaws.com/website-capstone:latest
+        ports:
+        - containerPort: 80
