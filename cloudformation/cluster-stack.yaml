@@ -59,23 +59,23 @@ Outputs:
     Description: Cluster Name
     Value: !Ref Cluster
     Export:
-      Name: !Sub ${EnvironmentName}-ClusterName
+      Name: !Sub ${EnvironmentName}-CLUSTER-NAME
 
   ClusterArn:
     Description: Cluster Arn
     Value: !GetAtt Cluster.Arn
     Export:
-      Name: !Sub ${EnvironmentName}-ClusterArn
+      Name: !Sub ${EnvironmentName}-CLUSTER-ARN
 
   ClusterEndpoint:
     Description: Cluster Endpoint
     Value: !GetAtt Cluster.Endpoint
     Export:
-      Name: !Sub ${EnvironmentName}-ClusterEndpoint
+      Name: !Sub ${EnvironmentName}-CLU-ENDP
 
   ClusterControlPlaneSecurityGroup:
     Description: ClusterControlPlaneSecurityGroup
     Value: !Ref ClusterControlPlaneSecurityGroup
     Export:
-      Name: !Sub ${EnvironmentName}-ClusterControlPlaneSecurityGroup
+      Name: !Sub ${EnvironmentName}-CLU-CONT-PANE-SC
 
