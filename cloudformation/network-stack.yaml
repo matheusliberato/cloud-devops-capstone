@@ -1,7 +1,8 @@
 Description:
-  Matheus Liberato / Udacity Final Project
-  This script deploys the necessary network that will be used in Udacity
-  Final Project to provide a Kubernetes cluster using AWS EKS.
+  Matheus Liberato / Udacity Capstone
+  This script deploys the necessary network (VPC, RouteTable, Subnets,
+  etc) that will be used in Udacity Capstone to provide a Kubernetes
+  cluster using AWS EKS.
 
 Parameters:
   EnvironmentName:
