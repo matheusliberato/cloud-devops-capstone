@@ -5,7 +5,7 @@ metadata:
   labels:
     app: website-capstone-app
 spec:
-  replicas: 3
+  replicas: 4
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -21,6 +21,6 @@ spec:
     spec:
       containers:
       - name: website-capstone-app
-        image: 961160187669.dkr.ecr.us-west-2.amazonaws.com/website-capstone:latest
+        image: 961160187669.dkr.ecr.us-west-2.amazonaws.com/website-capstone:4
         ports:
         - containerPort: 80
