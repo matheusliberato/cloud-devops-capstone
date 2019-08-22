@@ -178,9 +178,9 @@ Resources:
           PropagateAtLaunch: true
     UpdatePolicy:
       AutoScalingRollingUpdate:
-        MaxBatchSize: 1
+        MaxBatchSize: 2
         MinInstancesInService: !Ref NodeAutoScalingGroupDesiredCapacity
-        PauseTime: PT5M
+        PauseTime: PT1M
 
   NodeLaunchConfig:
     Type: AWS::AutoScaling::LaunchConfiguration
