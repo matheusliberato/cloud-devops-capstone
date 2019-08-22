@@ -53,12 +53,21 @@ Resources:
         Fn::ImportValue:
           !Sub "${EnvironmentName}-PUB1-SN"
       UserData:
-        IyEvYmluL2Jhc2gKYXB0LWdldCB1cGRhdGUKYXB0IGluc3RhbGwgLXkgZGVmYXVsdC1qZGsKd2dl
-        dCAtcSAtTyAtIGh0dHBzOi8vcGtnLmplbmtpbnMuaW8vZGViaWFuL2plbmtpbnMuaW8ua2V5IHwg
-        YXB0LWtleSBhZGQgLQpzaCAtYyAnZWNobyBkZWIgaHR0cHM6Ly9wa2cuamVua2lucy5pby9kZWJp
-        YW4tc3RhYmxlIGJpbmFyeS8gPiAvZXRjL2FwdC9zb3VyY2VzLmxpc3QuZC9qZW5raW5zLmxpc3Qn
-        CmFwdC1nZXQgdXBkYXRlCmFwdC1nZXQgaW5zdGFsbCAteSBqZW5raW5zCnN5c3RlbWN0bCBzdGF0
-        dXMgamVua2lucy5zZXJ2aWNlCg==
+        IyEvYmluL2Jhc2gKZWNobyAiSW5zdGFsbGluZyBKZW5raW5zIgphcHQtZ2V0IHVwZGF0ZQphcHQg
+        aW5zdGFsbCAteSBkZWZhdWx0LWpkawp3Z2V0IC1xIC1PIC0gaHR0cHM6Ly9wa2cuamVua2lucy5p
+        by9kZWJpYW4vamVua2lucy5pby5rZXkgfCBhcHQta2V5IGFkZCAtCnNoIC1jICdlY2hvIGRlYiBo
+        dHRwczovL3BrZy5qZW5raW5zLmlvL2RlYmlhbi1zdGFibGUgYmluYXJ5LyA+IC9ldGMvYXB0L3Nv
+        dXJjZXMubGlzdC5kL2plbmtpbnMubGlzdCcKYXB0LWdldCB1cGRhdGUKYXB0LWdldCBpbnN0YWxs
+        IC15IGplbmtpbnMKc3lzdGVtY3RsIHN0YXR1cyBqZW5raW5zLnNlcnZpY2UKZWNobyAiSW5zdGFs
+        bGluZyBEb2NrZXIiCmFwdC1nZXQgaW5zdGFsbCAteSBcCiAgICAgYXB0LXRyYW5zcG9ydC1odHRw
+        cyBcCiAgICAgY2EtY2VydGlmaWNhdGVzIFwKICAgICBjdXJsIFwKICAgICBnbnVwZy1hZ2VudCBc
+        CiAgICAgc29mdHdhcmUtcHJvcGVydGllcy1jb21tb24KY3VybCAtZnNTTCBodHRwczovL2Rvd25s
+        b2FkLmRvY2tlci5jb20vbGludXgvdWJ1bnR1L2dwZyB8IGFwdC1rZXkgYWRkIC0KYWRkLWFwdC1y
+        ZXBvc2l0b3J5IFwKICAgICJkZWIgW2FyY2g9YW1kNjRdIGh0dHBzOi8vZG93bmxvYWQuZG9ja2Vy
+        LmNvbS9saW51eC91YnVudHUgXAogICAkKGxzYl9yZWxlYXNlIC1jcykgXAogICBzdGFibGUiCmFw
+        dC1nZXQgdXBkYXRlCmFwdC1nZXQgaW5zdGFsbCAteSBkb2NrZXItY2UgZG9ja2VyLWNlLWNsaSBj
+        b250YWluZXJkLmlvCnVzZXJtb2QgLWFHIGRvY2tlciB1YnVudHUKZWNobyAiSW5zdGFsbGluZyBM
+        aW50ZXIiCmFwdC1nZXQgaW5zdGFsbCAteSB0aWR5Cgo=
       Tags:
         - Key: Name
           Value: !Sub "${EnvironmentName}-JENKINS"
